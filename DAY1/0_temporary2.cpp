@@ -33,13 +33,13 @@ int main()
 								// 나지 않을수 있습니다.
 								// => VC 가 C++문법을 확장한것. 
 						
-	// 핵심 3. temporary 는 reference 로 가리킬수 없다.
+	// 핵심 3. temporary 는 lvalue reference 로 가리킬수 없다.
 	Point& r1 = pt;				// ok
 	Point& r2 = Point(1, 2);	// error
 
 	
 
-	// 핵심 4. temporary 는 const reference 로 가리킬수 있다
+	// 핵심 4. temporary 는 const lvalue reference 로 가리킬수 있다
 	const Point& r3 = Point(1, 2); // ok.. 
 						// => 이 경우 temporary 의 수명은 r3의 수명과
 						//    동일합니다.
