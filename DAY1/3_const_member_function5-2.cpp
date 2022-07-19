@@ -1,12 +1,12 @@
 #include <iostream>
 #include <vector>
 
-class Car
+// 참조계수를 책임지는 기반 클래스
+class RefCount
 {
-	int speed;
 	int refcnt = 0;
 public:
-	~Car() { std::cout << "~Car" << std::endl; }
+	~RefCount() { std::cout << "~RefCount" << std::endl; }
 
 	void AddRef() { ++refcnt; }
 	void Release()
@@ -17,7 +17,7 @@ public:
 };
 
 // Truck 도 참조계수 기술을 사용하고 싶다.
-class Truck
+class Truck : public RefCount
 {
 public:
 	~Truck() { std::cout << "~Truck" << std::endl; }
