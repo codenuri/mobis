@@ -27,6 +27,9 @@ int main()
 
 
 	// 이해 되신 분은 아래 2줄 차이점이 뭘지 생각해 보세요
-	std::vector<int> sv1(10, 3);
-	std::vector<int> sv2{10, 3};
+	std::vector<int> sv1(10, 3); // vector(int, int) 생성자
+								 // => 10개 요소를 3으로 초기화
+
+	std::vector<int> sv2{10, 3}; // vector(std::initializer_list) 생성자
+								 // => 2개 요소를 10, 3으로 초기화
 }
