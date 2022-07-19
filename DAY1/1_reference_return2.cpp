@@ -4,7 +4,10 @@ class Counter
 {
 	int value{ 0 };
 public:
-	Counter increment()
+	// 핵심 : "*this" 를 반환할때는 반드시 "reference" 반환을 해야 합니다.
+	//       아래 2줄의 차이점을 명확히 알아 두세요
+//	Counter  increment()  // 복사본(temporary) 반환
+	Counter& increment()  // 복사본 생성 안됨
 	{
 		++value;
 		return *this;
