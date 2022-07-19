@@ -15,6 +15,9 @@ public:
 	void print(const std::string& s) 
 	{
 		std::cout << s << std::endl; 
+
+		// 인자 s 를 다른 곳에 복사 할때는 move개념을 지원하면됩니다.
+		// "name = s" 같은 코드가 있을때만
 	}
 };
 
@@ -27,6 +30,13 @@ int main()
 	p.setName(s1);			
 
 	p.setName(std::move(s2));
+
+	p.print(s1); // s1의 자원을 복사하거나 하지않고
+				// 그냥 한번읽기만 하는 코드 입니다.
+	p.print(std::move(s1)); // 에러 없습니다.
+							// 하지만 print 는 전달받은 객체를
+							// 다른 곳에 복사 하는 작업을 하지는 않습니다.
+							// 그러므로 move 효과는 없습니다.
 							
 
 }
