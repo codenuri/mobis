@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 
 class People
 {
@@ -30,5 +31,17 @@ int main()
 
 	std::cout << s1 << std::endl; 
 	std::cout << s2 << std::endl; // ""
+
+
+	std::vector<std::string> v;
+
+	v.push_back( s1 );	// s1의 자원을 복사. s1계속 사용가능(자원 있음)
+	v.push_back( std::move(s1) ); // s1의 자원을 가져가라. s1자원 손실
 }
 
+// C++98 시절
+void setName(const std::string& s) { name = s; }   
+
+// C++11 이후
+void setName(const std::string& s) { name = s; }
+void setName(std::string&& s)      { name = std::move(s); }
