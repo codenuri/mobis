@@ -12,7 +12,8 @@ public:
 		: name(name), addr(addr)
 	{
 	}
-
+	// C++11 이후 최선의 코드가 되려면 위 한개 말고.. 아래 3개가 더있어야 합니다.
+	// => "move"를 고려한 setter!!
 	People(const std::string& name, std::string&& addr)
 		: name(name), addr(std::move(addr)) 
 	{
