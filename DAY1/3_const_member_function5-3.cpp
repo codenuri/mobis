@@ -1,5 +1,11 @@
 #include <iostream>
 #include <vector>
+
+// CRTP : Curiously Recurring Template Pattern
+
+// 기반 클래스 만들때 미래에 만들어질 파생 클래스 이름을 사용할수 있게 하는 기술
+// 기반 클래스 템플릿 인자로 파생 클래스 이름을 전달 받는 기술
+
 template<typename T>
 class RefCount
 {
@@ -19,7 +25,7 @@ public:
 	}
 };
 
-class Truck : public RefCount<   >
+class Truck : public RefCount< Truck  >
 {
 public:
 	~Truck() { std::cout << "~Truck" << std::endl; }
