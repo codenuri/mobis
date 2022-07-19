@@ -24,7 +24,6 @@ public:
 	void print() const 
 	{
 //		x = 10; // error. "상수 멤버 함수" 에서는 멤버 데이타를 변경할수 없습니다.
-
 		std::cout << x << ", " << y << std::endl;
 	}
 };
