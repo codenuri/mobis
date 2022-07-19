@@ -6,6 +6,8 @@
 // 아래 코드에서 "getArea()" 로 만들면 틀린 코드 입니다.
 //             "getArea() const" 가 되어야 합니다.
 
+// 멤버 데이타를 수정하게 되는 멤버 함수만 const 를 붙이지 않습니다.
+
 class Rect
 {
 	int x, y, w, h;
