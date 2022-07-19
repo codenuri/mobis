@@ -12,10 +12,27 @@ public:
 	// => 상수 객체도 수명관리 가능해야 합니다.
 	void AddRef() const { ++refcnt; }
 
-	void Release() const		
-	{
+//	void Release()			// void Release(RefCount* this)
+//							// 즉, this가 const 가 아닙니다.
+
+	void Release() const	// void Release(const RefCount* this)		
+	{						// 즉, this가 const를 가리키는 포인터 입니다
+
+	//	멤버변수 = 10;        // this->멤버변수 = 10 인데
+							 // this가 const 를 가리키는 포인터 이므로 에러
+
 		if (--refcnt == 0)
-			delete static_cast<T*>(this); 
+			//delete static_cast<T*>(this); 
+					// const RefCount* => Truck* 로 변환.. 
+					//				그런데 static_cast 는 const 제거가 안됩니다.
+
+//			delete static_cast<T*>(const_cast<RefCount*>(this));
+					// const RefCount* => RefCount* 캐스팅후
+					// RefCount* => Truck*          캐스팅
+
+			delete static_cast<const T*>(this);
+					// const RefCount* => const Truck* 로 캐스팅
+					// 즉, const 는 유지하면서 타입만 변경
 	}
 };
 
