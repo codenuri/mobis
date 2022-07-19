@@ -12,7 +12,10 @@ int main()
 	true;	// bool
 	nullptr;// std::nullptr_t
 
+	
 	std::nullptr_t mynull = nullptr;
+	bool           myfalse = false;   // 이렇게 생각하세요 
+									  // false 대신 myfalse 사용가능. 
 
 	// 이제 nullptr 대신 mynull 을 사용해도 동일 합니다.
 	int* p1 = nullptr;
