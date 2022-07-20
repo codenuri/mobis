@@ -20,6 +20,7 @@ public:
 };
 //-------------------
 // Stream 에서 파생된  새로운 Stream 제작
+// => 아래 코드의 문제점 찾아 보세요
 
 class PipeStream : public Stream
 {
@@ -32,11 +33,22 @@ public:
 	// 파생 클래스에서 반드시 명시적으로 호출해야 합니다.
 	PipeStream() : Stream(mybuf) {}
 };
+/*
+// 위 코드는 컴파일러에의해서 아래 처럼 변경
+class PipeStream : public Stream
+{
+//	Buffer mybuf{ 1024 }; // 이코드는 
+	Buffer mybuf;			// 결국 이렇게 되고, 초기화는 
+							// PipeStream의 초기화 리스트에서 초기화되는것
+public:
+	PipeStream() : Stream(mybuf), mybuf{ 1024 } {}
+};
+*/
 
 
 int main()
 {
-
+	PipeStream ps;
 }
 
 
