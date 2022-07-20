@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-void f1() {}
+void f1() noexcept {}
 
 class People
 {
@@ -33,13 +33,13 @@ public:
 	} 
 };
 
-
-
 int main()
 {
 	People p1("kim", 20);
 	People p2 = std::move_if_noexcept(p1); // STL 의 대부분의 컨테이너가
 											// 이렇게 구현
+
+	std::pair<int, int> p;
 }
 
 
