@@ -15,7 +15,8 @@ public:
 	// 2. 예외가 없다는 사실을 컴파일러에게 알려주세요
 	
 	// 함수() noexcept : 함수가 예외가 없음을 컴파일러에게 알리는 것
-
+	// move 생성자가 아니라도, 
+	// "함수가 예외 가능성이 없다면, noexcept" 를 붙이면 좋습니다.(최적화가 잘됩니다.)
 	Object(Object&&) noexcept
 	{
 		std::cout << "move" << std::endl;
