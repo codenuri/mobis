@@ -8,7 +8,15 @@ struct Point
 	Point() = default;
 
 	Point(int a, int b) : x(a), y(b) {}
+
+	// 사용자가 복사 생성자를 제공하면
+	// trivial 하지 않습니다.( 모든 멤버를 얕은 복사를 해도.. )
+	// => 아래 코드는 컴파일러가 생성하는 것과 동일한 모양입니다.
+	// => 하지만 사용자가 제공했으므로 trivial 하지 않습니다.
+	Point(const Point& pt) : x(pt.x), y(pt.y) {}
 };
+
+
 
 template<typename T> 
 void copy(T* dst, T* src, std::size_t size)
@@ -17,7 +25,6 @@ void copy(T* dst, T* src, std::size_t size)
 	{
 		// 배열 전체 복사는 "memcpy" 가 빠릅니다.
 		std::cout << "using memcpy" << std::endl;
-
 		memcpy(dst, src, sizeof(T) * size);
 	}
 	else
