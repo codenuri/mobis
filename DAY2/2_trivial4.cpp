@@ -7,7 +7,7 @@ class Test
 {
 	int data;
 public:
-	virtual void foo() {}
+//	virtual void foo() {}
 };
 void init(Test* p)
 {
@@ -32,7 +32,6 @@ void init(Test* p)
 
 	memset(p, 0, sizeof(Test));
 }
-
 
 int main()
 {
