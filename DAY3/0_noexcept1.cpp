@@ -13,7 +13,6 @@ void foo()	// 함수 구현(정의, .cpp)
 // noexcept 키워드는 2가지 일을 합니다
 // 1. 함수가 예외가 없음을 알릴때 사용
 // 2. 함수가 예외가 없는지 조사할때 사용
-
 void f1() {}				// 예외가 발생할수 있다.
 void f2() noexcept {}		// 예외가 없다는 의미.				
 void f3() noexcept(true) {} // 예외가 없다는 의미
@@ -31,5 +30,13 @@ int main()
 	std::cout << noexcept(f3()) << std::endl;
 	std::cout << noexcept(f4()) << std::endl;
 
+	if (noexcept(f1()))
+	{
+		std::cout << "f1 은 항상 안전하다." << std::endl;
+	}
+	else
+	{
+		std::cout << "f1은 예외 가능성이 있으므로 다른 함수 사용" << std::endl;
+	}
 }
 
