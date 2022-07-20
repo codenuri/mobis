@@ -19,8 +19,6 @@ struct Point
 	Point(const Point& pt) = default; // ÀÌ°ז¿ל trivial
 };
 
-
-
 template<typename T> 
 void copy(T* dst, T* src, std::size_t size)
 {
