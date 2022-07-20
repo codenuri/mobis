@@ -56,3 +56,8 @@ int main()
 	s2 = "kim";		// 2. 대입연산자 호출 ( s2.operator=("kim"))	
 					// 즉, 2번의 함수 호출로 객체에 값을 넣은것
 }
+
+// godbolt.org 에 접속해 보세요..
+
+// 참고 : std::string 은 별명입니다. 실제 클래스 이름은
+//       std::basic_string 입니다
