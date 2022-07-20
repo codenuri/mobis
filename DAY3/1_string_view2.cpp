@@ -26,6 +26,9 @@ int main()
 	// 잘 생각해 보세요
 	// 아래 처럼 "abcdefghijklmnopqrstu" 라는 문자열 리터럴을 사용하면
 	// => "상수 메모리에 문자열이 놓이게 됩니다"
-//	f1("abcdefghijklmnopqrstu");
-	f2("abcdefghijklmnopqrstu");
+	f1("abcdefghijklmnopqrstu");	// 이 문자열을 가지고
+									// string 의 임시객체를 생성해서
+									// 전달 하므로 "오버헤드가 있습니다"
+
+//	f2("abcdefghijklmnopqrstu");
 }
