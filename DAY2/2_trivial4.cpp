@@ -26,8 +26,8 @@ void init(Test* p)
 
 	// C 언어는 memset, memcpy 등을 많이 사용합니다.
 
-	static_assert(std::is_trivial<T>::value &&
-		    	  std::is_standard_layout<T>::value,
+	static_assert(std::is_trivial<Test>::value &&
+		    	  std::is_standard_layout<Test>::value,
 				  "error");
 
 	memset(p, 0, sizeof(Test));
