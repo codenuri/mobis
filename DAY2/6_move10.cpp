@@ -27,13 +27,10 @@ int main()
 	Object o1;
 	Object o2 = o1; // 항상 복사 생성자
 	Object o3 = std::move(o1); // 항상 move 생성자
-
+								// noexcept 유무에 상관없이
 	Object o4 = std::move_if_noexcept(o2); 
 					// move 생성자에 예외가 없다면(noexcept 가 붙었다면) move생성자
 					// noexcept 가 붙어 있지 않으면 복사 생성자
-
-
-
 	std::vector<Object> v(5);
 	std::cout << "----------------" << std::endl;
 
