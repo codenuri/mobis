@@ -13,7 +13,10 @@ struct Point
 	// trivial 하지 않습니다.( 모든 멤버를 얕은 복사를 해도.. )
 	// => 아래 코드는 컴파일러가 생성하는 것과 동일한 모양입니다.
 	// => 하지만 사용자가 제공했으므로 trivial 하지 않습니다.
-	Point(const Point& pt) : x(pt.x), y(pt.y) {}
+//	Point(const Point& pt) : x(pt.x), y(pt.y) {}
+
+	// 만들지 않거나, 아래 처럼 만들면 trivial 합니다.
+	Point(const Point& pt) = default; // 이경우 trivial
 };
 
 
