@@ -7,6 +7,7 @@ int main()
 {
 	std::string s = "sfjsdjflsdjflsjlfks";
 
+	// 핵심 : 아래 2줄의 차이점(메모리 그림)을 알아 두세요.
 	std::string      ss = s; // 문자열 복사
 	std::string_view sv = s; // s의 문자열을 가리키게 됩니다.
 
