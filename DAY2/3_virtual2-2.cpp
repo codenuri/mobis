@@ -1,6 +1,6 @@
 #include <iostream>
 
-// C35. 기반 클래스 소멸자는 virtual 이거나 protected 이어야 한다.
+// C35. 기반 클래스 소멸자는 virtual 이거나 protected - non virtual 이어야 한다.
 
 class Base
 {
