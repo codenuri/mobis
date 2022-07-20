@@ -22,7 +22,12 @@ struct Base
 	{
 		std::cout << "Base()" << std::endl;
 	}
-	~Base() { std::cout << "~Base()" << std::endl; }
+	~Base() 
+	{
+		std::cout << "~Base()" << std::endl; 
+
+		// ~BM(); // 멤버 데이타의 소멸자 호출
+	}
 };
 struct Derived : public Base
 {
@@ -33,7 +38,13 @@ struct Derived : public Base
 	{											// 사용자가 변경할수 없습니다.
 		std::cout << "Derived()" << std::endl;
 	}
-	~Derived() { std::cout << "~Derived()" << std::endl; }
+	~Derived()
+	{
+		std::cout << "~Derived()" << std::endl; 
+
+		// ~DM::DM()  멤버 데이타 소멸자 먼저 호출
+		// ~Base()    기반 클래스 소멸자 호출.  
+	}
 };
 int main()
 {
