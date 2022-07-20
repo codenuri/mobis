@@ -49,11 +49,19 @@ int main()
 	//        primitive type 은 의미 없습니다.
 	
 	std::string s1 = "hello";
-	std::string s2 = std::move(s1);
+	std::string s2 = std::move(s1); // => string 클래스 안에 있는
+									//    move 생성자 호출. 
 
 	int n1 = 10;
-	int n2 = std::move(n1);
+	int n2 = std::move(n1); // int n2 = static_cast<int&&>(n1) 인데
+							// int n2 = n1 과 동일합니다.
+
+	std::cout << n1 << std::endl; // 이경우 n1 이 "0"이 되나요 ??
+								  // => 아닙니다. 그냥 10 입니다.
 
 	int* p1 = &n1;
-	int* p2 = std::move(p1);
+	int* p2 = std::move(p1);	// int* p2 = p1 과 동일합니다.
+								// p1이 0 으로 reset 되는거 아닙니다.	
+
+	std::cout << p1 << std::endl; //
 }
