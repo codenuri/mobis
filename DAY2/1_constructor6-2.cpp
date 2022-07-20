@@ -10,6 +10,7 @@ struct Base
 
 	// 객체의 생성 과정에서 가상함수를 호출하고 싶다면
 	// 팩토리 함수를 사용해라!!
+	/*
 	template<typename T>
 	static T* Create()
 	{
@@ -17,6 +18,16 @@ struct Base
 		p->init();    // 가상함수를 호출하고
 		return p;     // 객체 주소를 반환 합니다.
 	}
+	*/
+	template<typename T>
+	static std::shared_ptr<T> Create()
+	{
+		std::shared_ptr<T> p(new T); // 객체를 생성하고
+		p->init();    // 가상함수를 호출하고
+		return p;     // 객체 주소를 반환 합니다.
+	}
+
+
 
 	virtual void init() { std::cout << "Base::init" << std::endl; }     // 1
 };
@@ -32,6 +43,9 @@ int main()
 {
 //	Derived d;
 
-	Derived* p = Base::Create<Derived>(); 
+//	Derived* p = Base::Create<Derived>(); 
+   	auto p = Base::Create<Derived>(); 
+				// 1. 객체를 생성하고
+				// 2. init 을 호출했으므로 가상함수가 제대로 동작
 }
 
