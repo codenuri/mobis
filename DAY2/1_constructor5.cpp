@@ -27,6 +27,20 @@ public:
 	}
 };
 
+class Rect2
+{
+	// 핵심 2. C++11 부터는 아래 처럼 해도 됩니다.
+	Point ptFrom{ 0, 0 };
+	Point ptTo{ 0, 0 };
+public:
+	Rect() 
+	{
+	}
+};
+
+
+
+
 int main()
 {
 	Rect r;
