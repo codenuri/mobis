@@ -12,6 +12,7 @@ public:
 	{
 	}
 };
+// People1 p1("kim", 20);
 
 class People2
 {
