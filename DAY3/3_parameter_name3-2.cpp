@@ -20,8 +20,11 @@ template<typename T> class lock_guard
 	T& mtx;
 public:
 	lock_guard(T& m)			    : mtx(m) { mtx.lock(); }
-	lock_guard(T& m, adopt_lock_t ) : mtx(m) {  }
 
+	// 아래 코드의 2번째 인자는 실제 전달이 목표가 아닙니다.
+	// 단지, 이 생성자 함수를 선택하기 위한 목표 입니다.
+	// 이때는 함수 인자의 "이름을 생략"하는 것이 좋은 코드 입니다.
+	lock_guard(T& m, adopt_lock_t ) : mtx(m) {  }
 	~lock_guard() { mtx.unlock(); }
 };
 
