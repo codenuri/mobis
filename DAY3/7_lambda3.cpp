@@ -26,7 +26,21 @@ int main()
 	// C++11 부터는 함수객체를 간단히 만드는 문법이 제공됩니다.
 	// 이것이 "람다 표현식" 입니다
 
-	auto ret1 = std::find_if(v.begin(), v.end(), 
-						[k](int n) { return n % k == 0; });
+	auto ret2 = std::find_if(v.begin(), v.end(), 
+						[k](int n) { return n % k == 0; } );
 
+	// 컴파일러는 위 한줄을 보고 아래 코드를 생성 합니다.
+	class CompilerGeneratedName
+	{
+		int k;
+	public:
+		CompilerGeneratedName(int n) : k(n) {} 
+
+		bool operator()(int n) const 
+		{ 
+			return n % k == 0; 
+		}
+	};
+
+	auto ret3 = std::find_if(v.begin(), v.end(), CompilerGeneratedName(k) );
 }
