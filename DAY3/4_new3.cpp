@@ -16,4 +16,9 @@ int main()
 	std::cout << v.size() << std::endl; // 8
 	std::cout << v.capacity() << std::endl; // 10 
 
+	v.shrink_to_fit(); // size==capacity로 해달라는 것
+
+	std::cout << v.size() << std::endl; // 8
+	std::cout << v.capacity() << std::endl; // 10 
+
 }
