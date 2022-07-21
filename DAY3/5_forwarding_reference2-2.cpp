@@ -2,7 +2,20 @@
 // int&  : int 타입의 lvalue 만 받겠다는 의도
 // int&& : int 타입의 rvalue 만 받겠다는 의도
 // T&    : 임의 타입의 lvalue 만 받겠다는 의도.  
-// T&& : 
+// T&&   : 임의 타입의 lvalue 와 rvalue 를 모두 받겠다는 의도..
+
+// "모두 받는 것은" => "받을수 있는 함수를 생성" 하겠다는 것
+
+f4(n) => f4(int&)  함수 생성
+f4(3) => f4(int&&) 함수 생성
+
+// 또 하나의 핵심 : 생성된 함수는 모두 "call by reference" 라는 것
+
+// 꼭 외울것
+f4(n)  => T=int&   T&& = int& && => int&   f4(int&)
+f4(3) = > T=int    T&& = int&&             f4(int&&)
+
+
 
 // 아래 f4가 핵심 입니다.
 template<typename T> void f4(T&& a)
