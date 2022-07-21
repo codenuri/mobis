@@ -14,6 +14,8 @@ public:
 	List(int sz, T value) {}
 };
 
+
+
 int main()
 {
 	// 다음중 쉬워 보이는 것은 ?
@@ -36,7 +38,11 @@ int main()
 
 
 	// pair 10개를 보관하는 List 를 만들고 싶습니다.
-	List   s3(10, p); // 10 개를 p로 초기화 해달라.
+	// => 컴파일러는 p가 std::pair<int, double> 라는 것을 알지만
+	// => C++14까지는 타입을 표기해야 하므로 아래 처럼 복잡해 집니다.
+	List<std::pair<int, double>>   s3(10, p); // 10 개를 p로 초기화 해달라.
+		
+
 }
 
 
