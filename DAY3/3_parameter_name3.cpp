@@ -25,9 +25,15 @@ void foo()
 
 	if (m.try_lock())
 	{
-		//....
+		// m의 lock 은 직접 했지만(try_lock)
+		// unlock 은 lock_guard 를 활용하고 싶다.
 
-		m.unlock();
+		lock_guard<std::mutex> g(m);// 그런데, 생성자에서 또 lock 하게된다.
+									// 현재, m은 이미 lock 획득
+									// lock 을 하지 않는 생성자가 필요하다
+		//.....
+
+//		m.unlock(); // unlock 을 직접 사용하면 예외등 다양한 문제가 있습니다.
 	}
 
 }
