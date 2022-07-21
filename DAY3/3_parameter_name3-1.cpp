@@ -23,7 +23,6 @@ public:
 	~lock_guard() { mtx.unlock(); }
 };
 
-
 void foo()
 {
 	if (m.try_lock())
