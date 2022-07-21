@@ -34,7 +34,7 @@ int main()
 	// => 그외의 경우는 "&" 입니다.
 	LREF& r6 = n;	// int&  &		=> int&
 	RREF& r7 = n;	// int&& &		=> int&
-	LREF&& r8 = n; // int&  &&		=> int&
+	LREF&& r8 = n;	// int&  &&		=> int&
 	RREF&& r9 = 10;	// int&& &&		=> int&&
 }
 
