@@ -17,6 +17,8 @@ template<typename F> void chronometry(F f, int&& arg)
 int main()
 {
 	hoo(10); // ok
+
 	chronometry(hoo, 10); // error. 왜 에러일까요 ??
 						  //        해결책은 뭘까요 ?
+						// 이유와 해결책은 다음 예제에서.. 
 }
