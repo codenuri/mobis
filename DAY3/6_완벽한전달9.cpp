@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <type_traits>
 
 class People
 {
@@ -30,7 +31,20 @@ public:
 
 	// 위처럼 직접 만들면 너무 많은 함수를 만들어야 합니다.
 	// 이때 forwarding reference를 사용합니다.
+	/*
 	template<typename T1, typename T2>
+	People(T1&& s1, T2&& s2)
+		: name(std::forward<T1>(s1)), addr(std::forward<T2>(s2))
+	{
+	}
+	*/
+
+	// 아래 처럼하면 T1, T2를  string으로 한정할수 있습니다.
+	template<typename T1, 
+		     typename T2,
+			 typename = std::enable_if_t< 
+					std::is_constructible_v<std::string, T1> && 
+					std::is_constructible_v<std::string, T2> > >
 	People(T1&& s1, T2&& s2)
 		: name(std::forward<T1>(s1)), addr(std::forward<T2>(s2))
 	{
