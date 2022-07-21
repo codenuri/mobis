@@ -19,11 +19,12 @@ int main()
 	// 2. 메모리 해지 
 //	delete p1;
 
-	// 1. 메모리만 할당하기
-	Point* p2 = operator new(sizeof(Point));
+	// 1. 메모리만 할당하기 ( C의 malloc 과 유사 )
+	// => void* 반환이므로 캐스팅 필요
+	Point* p2 = static_cast<Point*>( operator new( sizeof(Point) ) );
 
 
-	// 4. 메모리만 해지
+	// 4. 메모리만 해지 ( C 의 free와 유사 )
 	operator delete(p2);
 
 }
