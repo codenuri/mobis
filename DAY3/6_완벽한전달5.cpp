@@ -28,6 +28,12 @@ template<typename F> void chronometry(F f, int&& arg)
 template<typename F, typename T&&> 
 void chronometry(F f, T&& arg)
 {
+	// 아래 캐스팅은 인자로 
+	// chronometry(foo, 10) => static_cast<int&&>(arg) 캐스팅
+	// chronometry(foo, n)  => static_cast<int&>(arg)  캐스팅 입니다.
+
+	// 인자로 "rvalue" 를 보내면 "rvalue 로 캐스팅"
+	// 인자로 "lvalue" 를 보내면 "lvalue 로 캐스팅"
 	f(static_cast<T&&>(arg));
 }
 
@@ -35,8 +41,12 @@ int main()
 {
 	int n = 10;
 							 
-	chronometry(foo, 10);	// T = ?,     T&& = ?
-							// static_cast<?>(arg)
-	chronometry(goo, n);	//
+	chronometry(foo, 10);	// T = int,     T&& = int&&
+							// void chronometry(F f, int&& arg)
+							// => static_cast<int&&>(arg)
+
+	chronometry(goo, n);	// T = int&,	T&& = int& &&   => int&
+							// void chronometry(F f, int& arg)
+							// => static_cast<int&>(arg)
 }
 
