@@ -23,6 +23,14 @@ int main()
 	// => void* 반환이므로 캐스팅 필요
 	Point* p2 = static_cast<Point*>( operator new( sizeof(Point) ) );
 
+	// 2. 이미 할당된 메모리에 생성자 호출
+	new(p2) Point(1, 2); // p2라는 메모리 주소에 있는 객체에 생성자 호출
+						 // "placement new" 라고 불리는 기술
+
+
+	// 3. 메모리 해지 없이 소멸자만 호출
+	p2->~Point();
+
 
 	// 4. 메모리만 해지 ( C 의 free와 유사 )
 	operator delete(p2);
