@@ -1,6 +1,7 @@
 // 함수 인자로
 // int&  : int 타입의 lvalue 만 받겠다는 의도
 // int&& : int 타입의 rvalue 만 받겠다는 의도
+
 // T&    : 임의 타입의 lvalue 만 받겠다는 의도.  
 // T&&   : 임의 타입의 lvalue 와 rvalue 를 모두 받겠다는 의도..
 
@@ -12,8 +13,11 @@ f4(3) => f4(int&&) 함수 생성
 // 또 하나의 핵심 : 생성된 함수는 모두 "call by reference" 라는 것
 
 // 꼭 외울것
-f4(n)  => T=int&   T&& = int& && => int&   f4(int&)
-f4(3) = > T=int    T&& = int&&             f4(int&&)
+f4(n) => T=int&   T&& = int& && => int&   f4(int&)
+f4(3) => T=int    T&& = int&&             f4(int&&)
+
+// T&& : "universal reference" 라고 부르자고 "effective-c++" 저자가 제안
+//       "forwarding reference" 라고 부르기로 결정
 
 
 
