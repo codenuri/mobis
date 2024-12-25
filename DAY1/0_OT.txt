@@ -1,0 +1,34 @@
+강석민 강사 ( smkang @ codenuri.co.kr )
+
+
+
+1. https://github.com/codenuri/mobis 에서 
+   
+   "DAY1.zip" 받으시면 됩니다.
+
+받으신분은 압축을 풀고, 0_OT.txt 열어 보세요
+
+
+2. 실습환경
+=> 편집기   : visual studio code 또는 다른 것 사용하셔도 됩니다.
+=> 컴파일러 : gcc 사용. (일부 예제는 g++ 사용, 스레드 생성 위해)
+
+
+3. C/C++ 컴파일러 없으신 분은 구글에서 "github mingw11" 검색후 2번째 링크 선택.
+=> https://github.com/brechtsanders/winlibs_mingw/releases/  
+=> ASSET 에서 다운 받으면 됩니다.
+=> i686 : 32bit    x86_64 : 64bit 버전 이고  ".zip" 받으세요
+
+
+4. 압축을 풀면 
+=> "mingw64(32)" 폴더 있습니다. 원하시는 곳에 복사해 두세요
+=> "mingw64/bin" 폴더 안에 "gcc" 있습니다. 
+=> "PATH" 환경 변수에 등록해 놓고 사용하시면 됩니다.
+=> 확인하려면 "명령프롬프트(cmd.exe)" 실행후, "gcc --version" 해보세요. 
+   (윈도우 시작 버튼 누르고  "cmd" )
+
+----------------------------------------------------
+vscode 사용하시는 분은 
+=> 실행후
+=> File 메뉴 선택후 Open Folder 선택
+=> DAY1 폴더 여시면 됩니다.
