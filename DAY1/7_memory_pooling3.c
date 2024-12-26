@@ -89,8 +89,15 @@ int main()
 	bullet* p1 = pool_alloc();
 	bullet* p2 = pool_alloc();
 
+	p1->x = 10;
+	p1->y = 10;	// 이렇게 사용하면 p1->next 정보는 손실.
+				// 하지만 다시 pool 에 놓일때 
+				// p1->next = pool_head 로 채워 집니다.
+
 	printf("%p\n", p1);
 	pool_free(p1);				// pool 의 list 의 제일 앞쪽에 다시 넣고
+								// 이순간 다시 p1->next = pool_head 이므로
+								// 문제 없음. 
 
 	bullet* p3 = pool_alloc(); 	// p3 는 결국 방금 반납한 p1 입니다.
 	printf("%p\n", p3);			// pool 의 list 의 제일 앞쪽에서 꺼내기
