@@ -53,6 +53,8 @@ typedef struct _bullet2
 
 } bullet2;
 
+// 위 코드가 C 네트워크의 in_addr 구조체 입니다.
+
 int main()
 {
 	bullet1 b1;		// pos 라는 이름이 있으면 아래 처럼 사용
