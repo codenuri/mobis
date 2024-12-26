@@ -28,5 +28,14 @@ int main()
 
 	// C# 은 switch 가 expression 입니다.
 	int ret2 = n switch { 1 => 10,  2 => 20, _ => 30 }; // C# 코드 
+
+	// 위 코드가 C 라면
+	int ret3; // 변수를 먼저 만들고
+	switch(n)
+	{
+		case 1: ret3 = 10; break;
+		case 2: ret3 = 20; break;
+		default: ret3 = 30;break;
+	}
  
 }
