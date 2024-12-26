@@ -5,7 +5,7 @@ typedef struct _point
 {
 	int x;
 	int y;
-} POINT;
+} MYPOINT;
 
 // 해결책 2. flexible array
 // => 핵심 : 일반적으로  크기가 0인 배열을 만들수 없지만
@@ -15,7 +15,7 @@ typedef struct _point
 typedef struct _shapes
 {
 	int count;		
-	POINT pos[0]; // flexible array
+	MYPOINT pos[0]; // flexible array
 } SHAPES;
 
 int main()
@@ -23,4 +23,16 @@ int main()
 	SHAPES s;
 
 	printf("%d\n", sizeof(s)); // 4
+
+	// flexible array 를 포함하는 구조체는 대부분 "동적할당" 해서 사용하게 됩니다.
+
+	SHAPES* sp = malloc(sizeof(SHAPES) + sizeof(MYPOINT) * 5);
+	sp->count = 5;
+	sp->pos[0].x = 10;  // pos 라는 이름 사용가능
+	sp->pos[0].y = 10;
+	sp->pos[1].x = 10;  
+	sp->pos[1].y = 10;
+
+	// 위 코드의 메모리 그림을 생각해 보세요
+	// => sp->count 와 sp->pos 는 연속된 메모리 공간에 있습니다.
 }
