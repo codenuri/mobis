@@ -1,7 +1,4 @@
-﻿// 성능 이야기가 아닌 멀티스레드의 어려움을 보여주는 코드.
-// => foo(), goo() 는 다른 스레드가 실행합니다.
-// => goo() 의  주석 생각해 보세요
-// cache 와 reorder
+#include <atomic> // C++헤더
 
 int a = 0;
 int b = 0;
@@ -10,6 +7,11 @@ int b = 0;
 void foo()
 {
     a = b + 1;
+
+    // 해결책은 메모리 펜스를 설치 해야 합니다
+    // C언어 : 기계어 직접 사용
+    // C++  : 표준 라이브러리리로 제공.
+    std::atomic_thread_fence( std::memory_order_seq_cst);
 
 	b = 1;
 }
@@ -22,9 +24,3 @@ void goo()
         // a == 1 을 보장할수 있을까 ? <<== 핵심
     }
 }
-// godbolt.org 에 위 코드 넣어 보세요
-
-
-
-
-
