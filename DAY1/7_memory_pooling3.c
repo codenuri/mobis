@@ -33,6 +33,12 @@ void pool_init()
 		pool_head[i].next = &(pool_head[i+1]);
 	}
 }
+
+void pool_destroy()
+{
+	free(pool_head);
+	pool_head = 0;
+}
 */
 
 void pool_init()
@@ -89,3 +95,9 @@ int main()
 	bullet* p3 = pool_alloc(); 	// p3 는 결국 방금 반납한 p1 입니다.
 	printf("%p\n", p3);			// pool 의 list 의 제일 앞쪽에서 꺼내기
 }
+
+// pool 을 사용하면
+// 1. 메모리 크기가 총알당 한개가 아닌 pool 전체의 크기 한개만 추가 할당
+// 2. pool 안에서는 동일 크기 메모리 할당 사용하므로 파편화 현상 없습니다
+// 3. 실제 할당이 아닌 list 연산이므로 할당/해지가 아주 빠르게 됩니다.
+// 4. static 메모리를 힙처럼 사용도 가능. 
