@@ -52,6 +52,7 @@ void good_cpp()
 
 	// C++ 언어는 C++20 부터 이개념을 공식 지원합니다.
 	// => attribute 문법
+	// => gppbuild 소스.cpp -std=c++20 으로 해야 합니다.
 	if ( a == 10 ) [[likely]]
 	{
 		b = 0;
