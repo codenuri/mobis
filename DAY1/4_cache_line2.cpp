@@ -14,11 +14,25 @@ const int sz = 10000000;
 // long long n2 = 0;
 
 // 해결책 #1. padding 넣기
+/*
 long long n1 = 0;
 char padding[64]; // 2개의 변수를 떨어뜨리기 위해 만든 코드
 long long n2 = 0;
+*/
 
+// 해결책 #2. C/C++ 언어에서 변수의 시작주소를 align 하는 문법이 제공됩니다.
+//			 C11, C++11 부터, 
 
+// C언어   : _Alignas (C11)
+// C++언어 : alignas  (C++11)
+
+#ifdef __cplusplus
+	alignas(64) long long n1 = 0;
+	alignas(64) long long n2 = 0;
+#else 
+	_Alignas(64) long long n1 = 0;
+	_Alignas(64) long long n2 = 0;
+#endif
 
 void f1()
 {
