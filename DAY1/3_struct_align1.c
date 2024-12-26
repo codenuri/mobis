@@ -22,14 +22,14 @@ typedef struct _packet2
 int main()
 {
 	printf("%d\n", sizeof(PACKET1)); // 8
-	printf("%d\n", sizeof(PACKET2));
+	printf("%d\n", sizeof(PACKET2)); // 5
 
 	PACKET1 p1;
 	PACKET2 p2;
-	
+
 	// 아래 코드의 결과로 나오는 주소를 잘보세요(4의 배수인지 아닌지)
-	printf("%d\n", &(p1.cmd));
-	printf("%d\n", &(p1.data));
-	printf("%d\n", &(p2.cmd));
-	printf("%d\n", &(p2.data));
+	printf("%p\n", &(p1.cmd));
+	printf("%p\n", &(p1.data));
+	printf("%p\n", &(p2.cmd));
+	printf("%p\n", &(p2.data));
 }
