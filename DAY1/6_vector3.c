@@ -26,8 +26,36 @@ int main()
 			break;
 
 		score[count++] = n;
+
+
+		if ( count == size )
+		{
+			// #1. 기존 버퍼의 2배 크기 버퍼(배열) 할당
+			int* tmp = (int*)malloc(sizeof(int) * size * 2);
+
+			// #2. 작은 버퍼의 내용을 큰 버퍼로 이동
+			memcpy(tmp, score, sizeof(int)* size);
+					// => score 가 "가리키는 메모리 내용"을
+					// => tmp 가 "가리키는 메모리로"
+					// => sizeof(int)* size 만큼 복사
+
+			// #3. 기존 버퍼 제거
+			free(score);
+
+			// #4. score 가 새로운 버퍼를 가리키도록
+			score = tmp;
+
+			// #5. 마지막 작업은 ? - size 변경
+			size = size * 2;
+		}
 	}
 
-}
+	printf("할당한 메모리 크기 : %d\n", size);
+	printf("입력한 요소의 갯수 : %d\n", count);
 
+	// 더이상 필요없으면 버퍼 제거
+	free(score);
+}
+// 실행해서 9개쯤 입력해 보세요. 1,2,3.... 9
+// 그리고 -1 입력
 
