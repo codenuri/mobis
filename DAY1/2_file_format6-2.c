@@ -24,3 +24,11 @@ int main()
 // => 문자열 배열 보다 문자열 포인터 권장(공유!!)
 // => 문자열 포인터를 만들때는 "char*" 가 아닌 "const char*" 로 해야 항상 안전!!
 //		실수로 수정하게 되면 runtime error 가 아닌 compiler time error
+
+// RUST 언어
+// String 타입 : 문자열을 소유하는 타입(R/W 가능), C 언어의 문자열 배열과 유사
+// str    타입 : C언어의 const char*. 상수 메모리에 있는 읽기 전용 문자열(공유됨.) 
+
+// C++
+// string : 문자열 소유
+// string_view : const char* 의 의미. 
