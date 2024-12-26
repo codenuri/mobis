@@ -73,13 +73,13 @@ void ex2()
 
 		if ( count == size )
 		{
-			int* tmp = (int*)malloc(sizeof(int) * (size+1) );
+			int* tmp = (int*)malloc(sizeof(int) * (size+1) ); // <==
 
 			memcpy(tmp, score, sizeof(int)* size);
 
 			free(score);
 			score = tmp;
-			size = size + 1;
+			size = size + 1; // <<== 
 		}
 	}
 	free(score);
@@ -89,6 +89,9 @@ int main()
 	CHRONOMETRY(ex1); // 메모리 부족시 "기존 크기의 2배" 로 키우는 모델
 	CHRONOMETRY(ex2); // 메모리 부족시 "기존 크기 + 1 " 로 키우는 모델
 }
+
+// gcc(g++) : 많은 코드에서 2배 정도 증가 사용
+// cl(ms컴파일러) : 많은 코드에서 1.5배 정도 증가 사용
 
 
 
