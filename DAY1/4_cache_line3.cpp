@@ -19,14 +19,12 @@ void f1()
 	{
 		local += 1;
 	}
-
 	n1 = local;
 }
 
 void f2()
 {
 	long long local = n2;
-
 	for (int i = 0; i < sz; i++)
 	{
 		local += 1;
