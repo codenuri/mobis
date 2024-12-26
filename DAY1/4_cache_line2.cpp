@@ -26,7 +26,7 @@ long long n2 = 0;
 // C언어   : _Alignas (C11)
 // C++언어 : alignas  (C++11)
 
-#ifdef __cplusplus
+#ifdef __cplusplus			// 현재 컴파일러가 C인지 C++인지 조사
 	alignas(64) long long n1 = 0;
 	alignas(64) long long n2 = 0;
 #else 
