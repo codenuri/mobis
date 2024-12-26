@@ -37,7 +37,7 @@ void good()
 		}
 		else 
 		{
-
+			// 생략!!!
 		}
 	}
 	else 
