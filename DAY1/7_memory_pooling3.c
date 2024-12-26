@@ -20,10 +20,29 @@ typedef struct _bullet
 
 bullet* pool_head = 0;
 
-void init_pool()
+/*
+void pool_init()
 {
 	// #1. 200개 총알을 한번에 메모리 할당
 	pool_head = (bullet*)malloc(sizeof(bullet) * SIZE);
+
+
+	// #2. 모든 총알을 list 형태로 연결
+	for( int i = 0; i < SIZE -1; i++)
+	{
+		pool_head[i].next = &(pool_head[i+1]);
+	}
+}
+*/
+
+void pool_init()
+{
+	// malloc 과 free 를 사용하지 못하는 환경(임베디드 라면)
+	// 아래 처럼 해도 됩니다.
+	// => .data 섹션 활용
+	static char pool[sizeof(bullet) * SIZE];
+
+	pool_head = (bullet*)&pool;
 
 
 	// #2. 모든 총알을 list 형태로 연결
@@ -65,8 +84,8 @@ int main()
 	bullet* p2 = pool_alloc();
 
 	printf("%p\n", p1);
-	pool_free(p1);	
+	pool_free(p1);				// pool 의 list 의 제일 앞쪽에 다시 넣고
 
-	bullet* p3 = pool_alloc(); // p3 는 결국 방금 반납한 p1 입니다.
-	printf("%p\n", p3);
+	bullet* p3 = pool_alloc(); 	// p3 는 결국 방금 반납한 p1 입니다.
+	printf("%p\n", p3);			// pool 의 list 의 제일 앞쪽에서 꺼내기
 }
