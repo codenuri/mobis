@@ -45,7 +45,8 @@ int asm_main()
 
 int main()
 {
-	int n = asm_main();
+	int n = asm_main();	// 돌아올 주소를 스택에 넣고
+						// jmp asm_main
 
 	printf("main : %d\n", n);
 }
