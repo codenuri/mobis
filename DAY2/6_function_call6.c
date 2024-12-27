@@ -18,8 +18,8 @@ void Add()
 	// DWORD[RSP]   : RSP 위치의 dword값(4바이트) 꺼내기
 	// DWORD[RSP+8] : RSP 한칸 위 스택에서 값 꺼내기
 
-	asm("mov eax, dword[rsp + 8]");  // 1꺼내기(1번째 인자)
-	asm("add eax, dword[rsp + 16]"); // 2꺼내기(2번째 인자)
+	asm("mov eax, dword[rsp + 4]");  // 1꺼내기(1번째 인자)
+	asm("add eax, dword[rsp + 12]"); // 2꺼내기(2번째 인자)
 							
 	// 아래 코드원리 : 스택 꼭대기(rsp가 가리키는 곳)에서 꺼낸 주소로 돌아가기.
 	asm("ret");		
@@ -34,7 +34,7 @@ int asm_main()
 	asm("call Add");// 함수로 이동
 					// => 돌아올 주소를 스택에 넣고
 					// => 함수로 이동.	
-	asm("sub rsp, 16"); // 인자를 스택에 넣어 보낸경우
+	asm("add rsp, 16"); // 인자를 스택에 넣어 보낸경우
 						// 인자 전달에 사용된 스택은 제거되어야 합니다.
 						// rsp 레지스터를 위로 2칸 올리면 됩니다. 
 
