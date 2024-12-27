@@ -21,3 +21,12 @@ int main()
 // 다음중 좋은 코드는 ?
 void f1(int n)        { int ret = n;}
 void f2(const int& n) { int ret = n;}
+	//  const int* p  { int ret = *p;} 입니다
+	//					따라서, Read 과정에서 주소를 따라가서 꺼내게 되므로
+	//					성능저하가 있습니다.
+	
+// int 타입과 같은 primitive 타입은
+// => const& 사용하는 것 아닙니다.
+// => call by value 로 해야 합니다.
+
+// 크기가 큰 타입만 const& 로 하세요
